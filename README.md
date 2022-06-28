@@ -1,92 +1,316 @@
 # CORE CONCEPTS
 TODO
 
-
-* Delete pod using kubectl command -> kubectl delete pod frontend
-* delete pod created by specific YAML file -> kubectl delete -f pod.yaml
-* Use Hybrid approach to create a pod -> kubectl run frontend --image=nginx --restart=Never --port=80 \
--o yaml --dry-run=client > pod.yaml
- kubectl create -f pod.yaml
- 
-* delete an object using imperative approach -> kubectl delete pod frontend
-* Delete a project using declarative approach -> kubectl delete -f pod.yaml
-* Edit a live object -> kubectl edit pod frontend
-* Replace a live object -> kubectl replace -f pod.yaml
-* update a live object -> kubectl apply -f pod.yaml
-
-* transpile this kubectl format into a YAML file: kubectl run hazelcast --image=hazelcast/hazelcast --restart=Never \
---port=5701 --env="DNS_DOMAIN=cluster" --labels="app=hazelcast,env=prod"
-
-apiVersion: v1
-kind: Pod
-metadata:
-name: hazelcast
-labels:
-app: hazelcast
-env: prod
-spec:
-containers:
-- env:
-- name: DNS_DOMAIN
-value: cluster
-image: hazelcast/hazelcast
-name: hazelcast
-ports:
-- containerPort: 5701
-restartPolicy: Never
-
-* list pods -> kubectl get pods
-* List a pod in specific -> kubectl get pods hazelcast
-* render pod details -> kubectl describe pods hazelcast
-* render specific POD details isuing grep -> kubectl describe pods hazelcast | grep Image:
-
-* Modify this YAML manifest for a Pod by adding the following environment variables:
-SPRING_PROFILES_ACTIVE=prod
-VERSION='1.5.3'
-
-* run this command using the YAML manifest and the args attribute: "while true; do date; sleep 10; done"
-
-apiVersion: v1
-kind: Pod
-metadata:
-name: mypod
-spec:
-containers:
-- args:
-- /bin/sh
-- -c
-- while true; do date; sleep 10; done
-image: busybox
-name: mypod
-restartPolicy: Never
-
-* run this command using the YAML manifest and command and args attribute: "while true; do date; sleep 10; done"
-
-
-apiVersion: v1
-kind: Pod
-metadata:
-name: mypod
-spec:
-containers:
-- command: ["/bin/sh"]
-args: ["-c", "while true; do date; sleep 10; done"]
-image: busybox
-name: mypod
-restartPolicy: Never
-
-
-kubectl create -f pod.yaml
-
-kubectl logs mypod -f
-
-* list all namespaces -> kubectl get namespaces
-* create a namespace -> kubectl create namespace code-red
-* Delete a namespace -> kubectl delete namespace code-red
-
-
-
 -------------------
+### Delete pod using kubectl command 
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl delete pod frontend
+```
+
+</p>
+</details>
+
+### delete pod created by specific YAML file 
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl delete -f pod.yaml
+```
+
+</p>
+</details>
+
+### Use Hybrid approach to create a pod 
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl run frontend --image=nginx --restart=Never --port=80 \
+-o yaml --dry-run=client > pod.yaml
+```
+```bash
+ kubectl create -f pod.yaml
+```
+
+</p>
+</details>
+
+
+### kubectl delete pod frontend
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl delete pod frontend
+```
+
+</p>
+</details>
+
+### Delete a pod using declarative approach
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl delete -f pod.yaml
+```
+
+</p>
+</details>
+
+### Edit a live object
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl edit pod frontend
+```
+
+</p>
+</details>
+
+### Replace a live object
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl replace -f pod.yaml
+```
+
+</p>
+</details>
+
+### Update a live object
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl apply -f pod.yaml
+```
+
+</p>
+</details>
+
+### Translate this kubectl command into a YAML file: kubectl run hazelcast --image=hazelcast/hazelcast --restart=Never \
+### --port=5701 --env="DNS_DOMAIN=cluster" --labels="app=hazelcast,env=prod"
+
+<details><summary>show</summary>
+<p>
+
+```bash
+apiVersion: v1
+kind: Pod
+metadata:
+ name: hazelcast
+ labels:
+  app: hazelcast
+  env: prod
+spec:
+ containers:
+ - env:
+  - name: DNS_DOMAIN
+    value: cluster
+ image: hazelcast/hazelcast
+ name: hazelcast
+ ports:
+ - containerPort: 5701
+restartPolicy: Never
+```
+
+</p>
+</details>
+
+ 
+### List pods
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl get pods
+```
+
+</p>
+</details>
+
+### List a specific pod
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl get pods hazelcast
+```
+
+</p>
+</details>
+
+### Render pod details
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl describe pods hazelcast
+```
+
+</p>
+</details>
+
+### Render specific POD details using grep
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl describe pods hazelcast | grep Image:
+```
+
+</p>
+</details>
+
+### Modify this YAML manifest for a Pod by adding the following environment variables:
+### SPRING_PROFILES_ACTIVE=prod
+### VERSION='1.5.3'
+
+Initial YAML
+
+```bash
+apiVersion: v1
+kind: Pod
+metadata:
+  name: spring-boot-app
+spec:
+  containers:
+  - image: bmuschko/spring-boot-app:1.5.3
+    name: spring-boot-app
+```
+
+
+<details><summary>show</summary>
+<p>
+
+```bash
+apiVersion: v1
+kind: Pod
+metadata:
+  name: spring-boot-app
+spec:
+  containers:
+  - image: bmuschko/spring-boot-app:1.5.3
+    name: spring-boot-app
+    env:
+    - name: SPRING_PROFILES_ACTIVE
+      value: prod
+    - name: VERSION
+      value: '1.5.3'
+```
+
+</p>
+</details>
+
+### run this command using the YAML manifest and the args attribute: "while true; do date; sleep 10; done"
+
+<details><summary>show</summary>
+<p>
+
+```bash
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  containers:
+  - args:
+  - /bin/sh
+  - -c
+  - while true; do date; sleep 10; done
+  image: busybox
+  name: mypod
+restartPolicy: Never
+```
+
+</p>
+</details>
+
+
+### run this command using the YAML manifest and command and args attribute: "while true; do date; sleep 10; done"
+
+<details><summary>show</summary>
+<p>
+
+```bash
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  containers:
+  - command: ["/bin/sh"]
+  args: ["-c", "while true; do date; sleep 10; done"]
+  image: busybox
+  name: mypod
+restartPolicy: Never
+```
+To validate
+```bash
+kubectl create -f pod.yaml
+kubectl logs mypod -f
+```
+</p>
+</details>
+
+
+### list all namespaces
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl get namespaces
+```
+
+</p>
+</details>
+
+### create a namespace
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl create namespace code-red
+```
+
+</p>
+</details>
+
+
+### Delete a namespace
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl delete namespace code-red
+```
+
+</p>
+</details>
+
+
 ### Create a namespace called 'mynamespace' and a pod with image nginx called nginx on this namespace
 
 <details><summary>show</summary>
