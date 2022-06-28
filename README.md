@@ -185,8 +185,8 @@ kubectl describe pods hazelcast | grep Image:
 
 ### Modify this YAML manifest for a Pod by adding the following environment variables:
 ```bash
-### SPRING_PROFILES_ACTIVE=prod
-### VERSION='1.5.3'
+SPRING_PROFILES_ACTIVE=prod
+VERSION='1.5.3'
 ```
 
 Initial YAML
