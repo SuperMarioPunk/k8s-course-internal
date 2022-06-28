@@ -1,6 +1,4 @@
 # CORE CONCEPTS
-TODO
-
 -------------------
 ### Delete pod using kubectl command 
 
@@ -14,7 +12,7 @@ kubectl delete pod frontend
 </p>
 </details>
 
-### delete pod created by specific YAML file 
+### Delete pod created by specific YAML file 
 
 <details><summary>show</summary>
 <p>
@@ -43,7 +41,7 @@ kubectl run frontend --image=nginx --restart=Never --port=80 \
 </details>
 
 
-### kubectl delete pod frontend
+### Delete specific pod
 
 <details><summary>show</summary>
 <p>
@@ -103,8 +101,12 @@ kubectl apply -f pod.yaml
 </p>
 </details>
 
-### Translate this kubectl command into a YAML file: kubectl run hazelcast --image=hazelcast/hazelcast --restart=Never \
-### --port=5701 --env="DNS_DOMAIN=cluster" --labels="app=hazelcast,env=prod"
+### Translate this kubectl command into a YAML file:
+
+```bash
+kubectl run hazelcast --image=hazelcast/hazelcast --restart=Never \
+ --port=5701 --env="DNS_DOMAIN=cluster" --labels="app=hazelcast,env=prod"
+```
 
 <details><summary>show</summary>
 <p>
@@ -182,8 +184,10 @@ kubectl describe pods hazelcast | grep Image:
 </details>
 
 ### Modify this YAML manifest for a Pod by adding the following environment variables:
+```bash
 ### SPRING_PROFILES_ACTIVE=prod
 ### VERSION='1.5.3'
+```
 
 Initial YAML
 
@@ -221,7 +225,7 @@ spec:
 </p>
 </details>
 
-### run this command using the YAML manifest and the args attribute: "while true; do date; sleep 10; done"
+### Run this command using the YAML manifest and the args attribute: "while true; do date; sleep 10; done"
 
 <details><summary>show</summary>
 <p>
@@ -246,7 +250,7 @@ restartPolicy: Never
 </details>
 
 
-### run this command using the YAML manifest and command and args attribute: "while true; do date; sleep 10; done"
+### Run this command using the YAML manifest and command and args attribute: "while true; do date; sleep 10; done"
 
 <details><summary>show</summary>
 <p>
@@ -273,7 +277,7 @@ kubectl logs mypod -f
 </details>
 
 
-### list all namespaces
+### List all namespaces
 
 <details><summary>show</summary>
 <p>
@@ -285,7 +289,7 @@ kubectl get namespaces
 </p>
 </details>
 
-### create a namespace
+### Create a namespace
 
 <details><summary>show</summary>
 <p>
