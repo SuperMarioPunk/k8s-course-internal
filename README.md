@@ -2,8 +2,6 @@
 TODO
 
 
-PRUEBA PA VER SI ESTA VAINA FUNCIONA
-
 
 * Delete pod using kubectl command -> kubectl delete pod frontend
 * delete pod created by specific YAML file -> kubectl delete -f pod.yaml
@@ -17,7 +15,29 @@ PRUEBA PA VER SI ESTA VAINA FUNCIONA
 * Replace a live object -> kubectl replace -f pod.yaml
 * update a live object -> kubectl apply -f pod.yaml
 
- 
+* transpile this kubectl format into a YAML file: kubectl run hazelcast --image=hazelcast/hazelcast --restart=Never \
+--port=5701 --env="DNS_DOMAIN=cluster" --labels="app=hazelcast,env=prod"
+
+apiVersion: v1
+kind: Pod
+metadata:
+name: hazelcast
+labels:
+app: hazelcast
+env: prod
+spec:
+containers:
+- env:
+- name: DNS_DOMAIN
+value: cluster
+image: hazelcast/hazelcast
+name: hazelcast
+ports:
+- containerPort: 5701
+restartPolicy: Never
+
+
+
 
 
 
