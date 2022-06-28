@@ -1,8 +1,26 @@
 # POD
 TODO
 
+
+
+
+
 * Delete pod using kubectl command -> kubectl delete pod frontend
 * delete pod created by specific YAML file -> kubectl delete -f pod.yaml
+* Use Hybrid approach to create a pod -> kubectl run frontend --image=nginx --restart=Never --port=80 \
+-o yaml --dry-run=client > pod.yaml
+ kubectl create -f pod.yaml
+ 
+* delete an object using imperative approach -> kubectl delete pod frontend
+* Delete a project using declarative approach -> kubectl delete -f pod.yaml
+* Edit a live object -> kubectl edit pod frontend
+* Replace a live object -> kubectl replace -f pod.yaml
+* update a live object -> kubectl apply -f pod.yaml
+
+ 
+
+
+
 
 -------------------
 ### Create a namespace called 'mynamespace' and a pod with image nginx called nginx on this namespace
