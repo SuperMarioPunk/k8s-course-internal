@@ -2,7 +2,7 @@
 TODO
 
 
-
+PRUEBA PA VER SI ESTA VAINA FUNCIONA
 
 
 * Delete pod using kubectl command -> kubectl delete pod frontend
