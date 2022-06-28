@@ -1,6 +1,5 @@
-# POD
+# CORE CONCEPTS
 TODO
-
 
 
 * Delete pod using kubectl command -> kubectl delete pod frontend
@@ -36,9 +35,54 @@ ports:
 - containerPort: 5701
 restartPolicy: Never
 
+* list pods -> kubectl get pods
+* List a pod in specific -> kubectl get pods hazelcast
+* render pod details -> kubectl describe pods hazelcast
+* render specific POD details isuing grep -> kubectl describe pods hazelcast | grep Image:
+
+* Modify this YAML manifest for a Pod by adding the following environment variables:
+SPRING_PROFILES_ACTIVE=prod
+VERSION='1.5.3'
+
+* run this command using the YAML manifest and the args attribute: "while true; do date; sleep 10; done"
+
+apiVersion: v1
+kind: Pod
+metadata:
+name: mypod
+spec:
+containers:
+- args:
+- /bin/sh
+- -c
+- while true; do date; sleep 10; done
+image: busybox
+name: mypod
+restartPolicy: Never
+
+* run this command using the YAML manifest and command and args attribute: "while true; do date; sleep 10; done"
 
 
+apiVersion: v1
+kind: Pod
+metadata:
+name: mypod
+spec:
+containers:
+- command: ["/bin/sh"]
+args: ["-c", "while true; do date; sleep 10; done"]
+image: busybox
+name: mypod
+restartPolicy: Never
 
+
+kubectl create -f pod.yaml
+
+kubectl logs mypod -f
+
+* list all namespaces -> kubectl get namespaces
+* create a namespace -> kubectl create namespace code-red
+* Delete a namespace -> kubectl delete namespace code-red
 
 
 
