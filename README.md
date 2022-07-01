@@ -10,10 +10,12 @@
 </details>
 
 ### Delete pod created by specific YAML file 
-<details><summary>show</summary>  
+<details><summary>show</summary>
+  
   ```bash
   kubectl delete -f pod.yaml
   ```  
+  
 </details>
 
 ### Use Hybrid approach to create a pod 
