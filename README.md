@@ -25,13 +25,16 @@
 ### Use Hybrid approach to create a pod 
 <details><summary>show</summary>
   <p>
+    
   ```bash
   kubectl run frontend --image=nginx --restart=Never --port=80 \
   -o yaml --dry-run=client > pod.yaml
   ```
+    
   ```bash
   kubectl create -f pod.yaml
   ```
+    
   </p>
 </details>
 
@@ -39,6 +42,7 @@
 ### Delete specific pod
 <details><summary>show</summary>
   <p>
+    
   ```bash
   kubectl delete pod frontend
   ```
@@ -48,41 +52,50 @@
 ### Delete a pod using declarative approach
 <details><summary>show</summary>
   <p>
+    
   ```bash
   kubectl delete -f pod.yaml
   ```
+    
   </p>
 </details>
 
 ### Edit a live object
 <details><summary>show</summary>
   <p>
+    
   ```bash
   kubectl edit pod frontend
   ```
+    
   </p>
 </details>
 
 ### Replace a live object
 <details><summary>show</summary>
   <p>
+    
   ```bash
   kubectl replace -f pod.yaml
   ```
+    
   </p>
 </details>
 
 ### Update a live object
 <details><summary>show</summary>
   <p>
+    
   ```bash
   kubectl apply -f pod.yaml
   ```
+    
   </p>
 </details>
 
 ### Translate this kubectl command into a YAML file:
 <p>
+  
 ```bash
   kubectl run hazelcast --image=hazelcast/hazelcast --restart=Never --port=5701 --env="DNS_DOMAIN=cluster" --labels="app=hazelcast,env=prod"
 ```
@@ -90,6 +103,7 @@
 </p>
 <details><summary>show</summary>
   <p>
+    
   ```bash
   apiVersion: v1
   kind: Pod
@@ -109,46 +123,56 @@
   - containerPort: 5701
   restartPolicy: Never
   ```
+    
   </p>
 </details>
 
 ### List pods
 <details><summary>show</summary>
   <p>
+    
   ```bash
   kubectl get pods
   ```
+    
   </p>
 </details>
 
 ### List a specific pod
 <details><summary>show</summary>
   <p>
+    
   ```bash
   kubectl get pods hazelcast
   ```
+    
   </p>
 </details>
 
 ### Render pod details
 <details><summary>show</summary>
   <p>
+    
   ```bash
   kubectl describe pods hazelcast
   ```
+    
   </p>
 </details>
 
 ### Render specific POD details using grep
 <details><summary>show</summary>
   <p>
+    
   ```bash
   kubectl describe pods hazelcast | grep Image:
   ```
+    
   </p>
 </details>
 
 ### Modify this YAML manifest for a Pod by adding the following environment variables:
+
 ```bash
 SPRING_PROFILES_ACTIVE=prod
 VERSION='1.5.3'
@@ -168,7 +192,9 @@ spec:
 ```
 
 <details><summary>show</summary>
+  
   <p>
+    
   ```bash
   apiVersion: v1
   kind: Pod
@@ -185,11 +211,13 @@ spec:
         value: '1.5.3'
   ```
   </p>
+  
 </details>
 
 ### Run this command using the YAML manifest and the args attribute: "while true; do date; sleep 10; done"
 <details><summary>show</summary>
   <p>
+    
   ```bash
   apiVersion: v1
   kind: Pod
@@ -205,12 +233,14 @@ spec:
     name: mypod
   restartPolicy: Never
   ```
+    
   </p>
 </details>
 
 ### Run this command using the YAML manifest and command and args attribute: "while true; do date; sleep 10; done"
 <details><summary>show</summary>
   <p>
+    
   ```bash
   apiVersion: v1
   kind: Pod
@@ -229,49 +259,59 @@ spec:
   kubectl create -f pod.yaml
   kubectl logs mypod -f
   ```
+    
   </p>
 </details>
 
 ### List all namespaces
 <details><summary>show</summary>
   <p>
+    
   ```bash
   kubectl get namespaces
   ```
+    
   </p>
 </details>
 
 ### Create a namespace
 <details><summary>show</summary>
   <p>
+    
   ```bash
   kubectl create namespace code-red
   ```
+    
   </p>
 </details>
 
 ### Delete a namespace
 <details><summary>show</summary>
   <p>
+    
   ```bash
   kubectl delete namespace code-red
   ```
+    
   </p>
 </details>
 
 ### Create a namespace called 'mynamespace' and a pod with image nginx called nginx on this namespace
 <details><summary>show</summary>
   <p>
+    
   ```bash
   kubectl create namespace mynamespace
   kubectl run nginx --image=nginx --restart=Never -n mynamespace
   ```
+    
   </p>
 </details>
 
 ### Create the pod that was just described using YAML
 <details><summary>show</summary>
   <p>
+    
   Easily generate YAML with:
   ```bash
   kubectl run nginx --image=nginx --restart=Never --dry-run=client -n mynamespace -o yaml > pod.yaml
@@ -303,16 +343,20 @@ spec:
   ```bash
   kubectl create -f pod.yaml
   ```
+    
   Alternatively, you can run in one line
+    
   ```bash
   kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kubectl create -n mynamespace -f -
   ```
+    
   </p>
 </details>
 
 ### Create a busybox pod (using kubectl command) that runs the command "env". Run it and see the output
 <details><summary>show</summary>
   <p>
+    
   ```bash
   kubectl run busybox --image=busybox --command --restart=Never -it --rm -- env # -it will help in seeing the output, --rm will immediately delete the pod after it exits
   # or, just run it without -it
@@ -326,6 +370,7 @@ spec:
 ### Create a busybox pod (using YAML) that runs the command "env". Run it and see the output
 <details><summary>show</summary>
 <p>
+  
 ```bash
 # create a  YAML template with this command
 kubectl run busybox --image=busybox --restart=Never --dry-run=client -o yaml --command -- env > envpod.yaml
