@@ -80,9 +80,9 @@
 ### Translate this kubectl command into a YAML file:
 <p>
 ```bash
-kubectl run hazelcast --image=hazelcast/hazelcast --restart=Never \
- --port=5701 --env="DNS_DOMAIN=cluster" --labels="app=hazelcast,env=prod"
+  kubectl run hazelcast --image=hazelcast/hazelcast --restart=Never --port=5701 --env="DNS_DOMAIN=cluster" --labels="app=hazelcast,env=prod"
 ```
+  
 </p>
 <details><summary>show</summary>
   <p>
