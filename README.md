@@ -409,41 +409,50 @@ kubectl logs busybox
 ### Get the YAML for a new namespace called 'myns' without creating it
 <details><summary>show</summary>
   <p>
+  
   ```bash
   kubectl create namespace myns -o yaml --dry-run=client
   ```
+  
   </p>
 </details>
 
 ### Get the YAML for a new ResourceQuota called 'myrq' with hard limits of 1 CPU, 1G memory and 2 pods without creating it
 <details><summary>show</summary>
   <p>
+  
   ```bash
   kubectl create quota myrq --hard=cpu=1,memory=1G,pods=2 --dry-run=client -o yaml
   ```
+  
   </p>
 </details>
 
 ### Get pods on all namespaces
 <details><summary>show</summary>
   <p>
+  
   ```bash
   kubectl get po --all-namespaces
   ```
+  
   Alternatively 
 
   ```bash
   kubectl get po -A
   ```
+  
   </p>
 </details>
 
 ### Create a pod with image nginx called nginx and expose traffic on port 80
 <details><summary>show</summary>
   <p>
+  
   ```bash
   kubectl run nginx --image=nginx --restart=Never --port=80
   ```
+  
   </p>
 </details>
 
@@ -514,6 +523,7 @@ kubectl run busybox --image=busybox --rm -it --restart=Never -- wget -O- $(kubec
 ### Get pod's YAML
 <details><summary>show</summary>
   <p>
+  
   ```bash
   kubectl get po nginx -o yaml
   # or
@@ -523,65 +533,78 @@ kubectl run busybox --image=busybox --rm -it --restart=Never -- wget -O- $(kubec
   # or
   kubectl get po nginx --output=yaml
   ```
+  
   </p>
 </details>
 
 ### Get information about the pod, including details about potential issues (e.g. pod hasn't started)
 <details><summary>show</summary>
   <p>
+  
   ```bash
   kubectl describe po nginx
   ```
+  
   </p>
 </details>
 
 ### Get pod logs
 <details><summary>show</summary>
   <p>
+  
   ```bash
   kubectl logs nginx
   ```
+  
   </p>
 </details>
 
 ### If pod crashed and restarted, get logs about the previous instance
 <details><summary>show</summary>
   <p>
+  
   ```bash
   kubectl logs nginx -p
   # or
   kubectl logs nginx --previous
   ```
+  
   </p>
 </details>
 
 ### Execute a simple shell on the nginx pod
 <details><summary>show</summary>
   <p>
+  
   ```bash
   kubectl exec -it nginx -- /bin/sh
   ```
+  
   </p>
 </details>
 
 ### Create a busybox pod that echoes 'hello world' and then exits
 <details><summary>show</summary>
   <p>
+  
   ```bash
   kubectl run busybox --image=busybox -it --restart=Never -- echo 'hello world'
   # or
   kubectl run busybox --image=busybox -it --restart=Never -- /bin/sh -c 'echo hello world'
   ```
+  
   </p>
 </details>
 
 ### Do the same, but have the pod deleted automatically when it's completed
 <details><summary>show</summary>
   <p>
+  
   ```bash
   kubectl run busybox --image=busybox -it --rm --restart=Never -- /bin/sh -c 'echo hello world'
   kubectl get po # nowhere to be found :)
   ```
+  
   </p>
 </details>
 
